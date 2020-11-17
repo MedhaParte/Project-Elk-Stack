@@ -68,9 +68,9 @@ Create a new VM with atleast 4G memory, a public IP address and basic security g
  - Verify SSH access to it from ansible container on jump-box
  - Add the Elk-Server VM to Ansible’s inventory by updating it’s hosts file in /etc/ansible to include ‘elk’ server under elk group as shown below:
  
-	[elk]
+		[elk]
 	
-	10.1.0.4 ansible_python_interpreter=/usr/bin/python3
+		10.1.0.4 ansible_python_interpreter=/usr/bin/python3
 	
  - Create a playbook to configure servers under [elk] group. 
  
@@ -131,16 +131,40 @@ Following image shows the filebeat-configuration file.
 
 [Filebeat config file](https://github.com/MedhaParte/Project-Elk-Stack/blob/main/Diagrams/filebeat-config-file.png)
 
+filebeat-playbook.yml & metricbeat-playbook.yml are the playbook files which are saved in /etc/ansible/roles folder.
+
+Filebeat playbook (filebeat-playbook.yml) includes: (for playbook code see playbook: filebeat-playbook.yml)
+
+[Filebeat](https://github.com/MedhaParte/Project-Elk-Stack/blob/main/Diagrams/Filebeat-Playbook.png)
+
+    • Selecting webservers for installing and launching filebeat 
+    • Download the `.deb` file 
+    • Installing the ‘.deb’ file
+    • Use Ansible's `copy` module to copy the filebeat configuration file to the correct place
+    • Enable and configure the filebeat modules
+    • Set up and start filebeat service
+
+Metricbeat playbook (metricbeat-playbook.yml) includes: (for playbook code see playbook:  metricbeat-playbook.yml)
+
+[Metricbeat](https://github.com/MedhaParte/Project-Elk-Stack/blob/main/Diagrams/Metricbeat-Playbook.png)
+
+    • Selecting webservers for installing and launching metricbeat
+    • Download the `.deb` file 
+    • Installing the ‘.deb’ file
+    • Use Ansible's `copy` module to copy the metricbeat configuration file to the correct place
+    • Configures and enable modules for metric beat
+    • Set up and start metric beat service
+
+ELK server is connected via HTTP and viewed through web browser by navigating to ELK-Server Public IP:-  http://[ELK-Server IP]:5601/app/kibana.
+
 Following image shows the kibana dashboard for Filebeat & Metricbeat.
 
 [Kibana Dashboard](https://github.com/MedhaParte/Project-Elk-Stack/blob/main/Diagrams/Kibana-dashboard.png)
-
-filebeat-playbook.yml & metricbeat-playbook.yml are the playbook files which are saved in /etc/ansible/roles folder.
 
 Host file is updated to make Ansible run the playbook on a specific machine.
 
 Machine to install elk server has to be listed under [elk] group, Whereas server to install filebeat and metricbeat is listed under [webservers] group in ‘hosts’ file in /etc/ansible/ container.
 
-ELK server is connected via HTTP and viewed through web browser by navigating to ELK-Server Public IP:-  http://[ELK-Server IP]:5601/app/kibana.
+List of Commands:- [commands](https://github.com/MedhaParte/Project-Elk-Stack/blob/main/Diagrams/Commands%20Used.txt)
 
 
