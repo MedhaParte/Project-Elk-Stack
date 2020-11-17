@@ -6,7 +6,7 @@ This project deploys and configures ELK Stack server to monitor cloud network se
 
 The files in this repository were used to configure the network depicted below.
 
-[Network Diagram](https://github.com/MedhaParte/Project-Elk-Stack/blob/main/Diagrams/Network-Diagram-Project-Elk-Stack.jpg)
+[Network Diagram](https://github.com/MedhaParte/Project-Elk-Stack/blob/main/Diagrams/Network-%20Diagram-Project-Elk-Stack.jpg)
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the file may be used to install only certain pieces of it, such as Filebeat.
 
@@ -32,8 +32,7 @@ Jump-Box minimizes the attack surface on the network since it is the only server
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the network, containers and system performance. By using Beats the ELK server is able to collect logs data and metrics of the 3 web servers.
 
     • Filebeat collects data about the specific files on remote system. Filebeat monitors for changes in the log files or locations that are specified and collects log events. 
-    • 
-Metric beat records Machine metrics like uptime, cpu usage etc.
+    • Metric beat records Machine metrics like uptime, cpu usage etc.
       
 The configuration details of each machine may be found below.
 
@@ -41,11 +40,11 @@ The configuration details of each machine may be found below.
 |   Name        |  Function          |    IP Address            | Operating System| 
 +───────────────+───────────────────────────────+──────────────────────────+───── |    
 |  Jump-Box-VM  |  Gateway           |  10.0.0.4 & 20.5.x.xxx   |  Linux          |
-|  Web-1        |  DVWA Web Server   |  10.0.0.6                |  Linux          |  													    
-|  Web-2        |  DVWA Web Server   |  10.0.0.7                |  Linux          |  													  
+|  Web-1        |  DVWA Web Server   |  10.0.0.6                |  Linux          |  											
+|  Web-2        |  DVWA Web Server   |  10.0.0.7                |  Linux          |  											
 |  Web-3        |  DVWA Web Server   |  10.0.0.9                |  Linux          |  
-|  ELK-Server   |  Elk Information   |10.1.0.4 & 13.86.xxx.xxx  |  Linux 	        | 
-| 	          		  Collector        |				                  |	                |
+|  ELK-Server   |  Elk Information   |10.1.0.4 & 13.86.xxx.xxx  |  Linux 	  | 
+| 	           Collector         |				|	          |
 +───────────────+────────────────────────────────+──────────────────────────+──────
 ### Access Policies
 
@@ -67,7 +66,8 @@ A summary of the access policies in place can be found in the table below.
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because manual errors were avoided and deployment of the container applications can be run on several machines at the same time. The configuration and installation of the services of each container were performed by playbooks which are files containing information of software to be installed, ports to be used, etc. The advantages to use ansible to automate the deployment of the container applications is that similar setup can be recreated within few minutes using ansible playbooks and also the playbook can be modified as and when needed.
 
-##Installation of ELK-Server:-
+###Installation of ELK-Server:-
+
 Create a new VM with atleast 4G memory, a public IP address and basic security group that will host ELK-Server under Red-Team VN2.
  - Verify SSH access to it from ansible container on jump-box
  - Add the Elk-Server VM to Ansible’s inventory by updating it’s hosts file in /etc/ansible to include ‘elk’ server under elk group as shown below 
@@ -75,7 +75,7 @@ Create a new VM with atleast 4G memory, a public IP address and basic security g
 	10.1.0.4 ansible_python_interpreter=/usr/bin/python3
  - Create a playbook to configure servers under [elk] group. 
  
-##ELK Configuration:-
+###ELK Configuration:-
 
 Playbook install-elk was used to deploy all packages and configurations needed for ELK-Server. It implements the following tasks: 
  - Increase virtual memory using sysctl command.i.e.Set the `vm.max_map_count` to 	`262144`.
@@ -94,7 +94,7 @@ Playbook install-elk was used to deploy all packages and configurations needed f
 #Deploy the container to ELK server by running playbook install-elk.
 
 Following image shows the success of each step listed in playbook.
-[Playbook Install-Elk](https://github.com/MedhaParte/Project-Elk-Stack/blob/main/Diagrams/ELK-Server configuration.png)
+[Playbook Install-Elk](https://github.com/MedhaParte/Project-Elk-Stack/blob/main/Diagrams/ELK-Server-%20configuration.png)
 
 # Launch the `elk-docker` container to start the ELK server.
 
@@ -116,7 +116,6 @@ These Beats allow us to collect the following information from each machine:
     • Filebeat monitors for changes in the syslog files of DVWA web-servers and collects log events. 
     • Metric beat records Machine metrics like cpu usage, memory usage, network statistics etc. 
 
-
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
@@ -130,7 +129,7 @@ Following image shows the filebeat-configuration file.
 [Filebeat config file](https://github.com/MedhaParte/Project-Elk-Stack/blob/main/Diagrams/filebeat-config-file.png)
 
 Following image shows the kibana dashboard for Filebeat & Metricbeat.
-[Kibana Dashboard](https://github.com/MedhaParte/Project-Elk-Stack/blob/main/Diagrams/Kibana-dashboard.png
+[Kibana Dashboard](https://github.com/MedhaParte/Project-Elk-Stack/blob/main/Diagrams/Kibana-dashboard.png)
 
 filebeat-playbook.yml & metricbeat-playbook.yml are the playbook files which are saved in /etc/ansible/roles folder.
 
