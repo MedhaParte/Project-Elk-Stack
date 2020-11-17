@@ -36,16 +36,14 @@ Integrating an ELK server allows users to easily monitor the vulnerable VMs for 
       
 The configuration details of each machine may be found below.
 
-+───────────────+────────────────────+──────────────────────────+─────────────────|
-|   Name        |  Function          |    IP Address            | Operating System| 
-+───────────────+───────────────────────────────+──────────────────────────+───── |    
-|  Jump-Box-VM  |  Gateway           |  10.0.0.4 & 20.5.x.xxx   |  Linux          |
-|  Web-1        |  DVWA Web Server   |  10.0.0.6                |  Linux          |  											
-|  Web-2        |  DVWA Web Server   |  10.0.0.7                |  Linux          |  											
-|  Web-3        |  DVWA Web Server   |  10.0.0.9                |  Linux          |  
-|  ELK-Server   |  Elk Information   |10.1.0.4 & 13.86.xxx.xxx  |  Linux 	  | 
-| 	           Collector         |				|	          |
-+───────────────+────────────────────────────────+──────────────────────────+──────
+| Name        | Function                  | IP Address               | Operating System |
+|-------------|---------------------------|--------------------------|------------------|
+| Jump-Box-VM | Gateway                   | 10.0.0.4 & 20.55.x.xxx   | Linux            |
+| Web-1       | DVWA Web Server           | 10.0.0.6                 | Linux            |
+| Web-2       | DVWA Web Server           | 10.0.0.7                 | Linux            |
+| Web-3       | DVWA Web Server           | 10.0.0.9                 | Linux            |
+| Elk-Server  | ELK Information Collector | 10.1.0.4 & 13.86.xxx.xxx | Linux            |
+
 ### Access Policies
 
 The machines on the internal network are not exposed to the public Internet. 
@@ -57,12 +55,10 @@ Machines within the network can only be accessed by ANSIBLE container on Jumpbox
 
 A summary of the access policies in place can be found in the table below.
 
-+──────────────+──────────────────────+──────────────────────────────+
-|   Name       | Publicly Accessible  | Allowed IP Addresses         |
-+──────────────+──────────────────────+──────────────────────────────+
-| Jump-Box-VM  | Yes                  | 108.235.XXX.XXX              |
-| ELK-Server   | Yes                  | 10.0.0.4 &  108.235.XXX.XXX  |
-+──────────────+──────────────────────+──────────────────────────────+
+| Name        | Publicly Accessible | Allowed IP Addresses       |
+|-------------|---------------------|----------------------------|
+| Jump-Box-VM | Yes                 | 108.235.xxx.xxx            |
+| ELK-Server  | Yes                 | 10.0.0.4 & 108.235.xxx.xxx |
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because manual errors were avoided and deployment of the container applications can be run on several machines at the same time. The configuration and installation of the services of each container were performed by playbooks which are files containing information of software to be installed, ports to be used, etc. The advantages to use ansible to automate the deployment of the container applications is that similar setup can be recreated within few minutes using ansible playbooks and also the playbook can be modified as and when needed.
 
