@@ -133,7 +133,7 @@ Following image shows the filebeat-configuration file.
 
 filebeat-playbook.yml & metricbeat-playbook.yml are the playbook files which are saved in /etc/ansible/roles folder.
 
-Filebeat playbook (filebeat-playbook.yml) includes: (for playbook code see playbook: filebeat-playbook.yml)
+Filebeat playbook (filebeat-playbook.yml) includes: (for playbook code see playbook:[filebeat-playbook](https://github.com/MedhaParte/Project-Elk-Stack/blob/main/ansible/filebeat-playbook.yml)
 
 [Filebeat](https://github.com/MedhaParte/Project-Elk-Stack/blob/main/Diagrams/Filebeat-Playbook.png)
 
@@ -144,7 +144,7 @@ Filebeat playbook (filebeat-playbook.yml) includes: (for playbook code see playb
     • Enable and configure the filebeat modules
     • Set up and start filebeat service
 
-Metricbeat playbook (metricbeat-playbook.yml) includes: (for playbook code see playbook:  metricbeat-playbook.yml)
+Metricbeat playbook (metricbeat-playbook.yml) includes: (for playbook code see playbook:[metricbeat-playbook](https://github.com/MedhaParte/Project-Elk-Stack/blob/main/ansible/metricbeat-playbook.yml)
 
 [Metricbeat](https://github.com/MedhaParte/Project-Elk-Stack/blob/main/Diagrams/Metricbeat-Playbook.png)
 
