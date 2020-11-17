@@ -1,0 +1,49 @@
+Commands Used:-
+
+## To generate public key for SSH access from ansible container
+	ssh-key 
+
+## View and copy the key to web-servers and elk server for SSH access
+	cat ~/.ssh/id_rsa.pub 
+
+## To install docker on jump-box
+	sudo apt update && sudo apt install docker.io
+## To verify docker installed 
+	docker -v	or     sudo systemctl status docker
+
+##  Once docker is installed, then containers are pulled. 
+     #To pull the  cyberxsecurity/ubuntu container, launch it and connect to it.
+		sudo docker pull cyberxsecurity/ubuntu:bionic 
+          	sudo docker run -ti cyberxsecurity/ubuntu:bionic bash  
+	
+     #To pull the  cyberxsecurity/ansible container, launch it and connect to it.
+		sudo docker pull cyberxsecurity/ansible
+		sudo docker run -ti cyberxsecurity/ansible bash
+
+## To see the list of installed containers
+ 	sudo docker container list -a  
+                  
+## To check the status of docker
+	sudo docker ps
+
+## To start  and activate the shell in container named magical-keller
+	 sudo docker start magical_keller
+	 sudo docker attach magical_keller   
+
+## To edit the hosts file in ansible container 
+   	  nano /etc/ansible/hosts
+
+## To check the connectivity of servers from ansible container
+	ansible webservers -m ping     
+	ansible -m ping all    
+       
+## To create a playbook
+	nano <playbook-name>.yml
+
+## To run the playbooks 
+    ansible-playbook <playbook-name>.yml
+
+## To download filebeat & metricbeat configuration file
+	curl https://gist.githubusercontent.com/slape/5cc350109583af6cbe577bbcc0710c93/raw/eca603b72586fbe148c11f9c87bf96a63cb25760/Filebeat > /etc/ansible/files/filebeat-config.yml
+	
+	curl https://gist.githubusercontent.com/slape/58541585cc1886d2e26cd8be557ce04c/raw/0ce2c7e744c54513616966affb5e9d96f5e12f73/metricbeat > /etc/ansible/files/metricbeat-config.yml
