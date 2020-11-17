@@ -25,7 +25,7 @@ The main purpose of this network is to expose a load-balanced and monitored inst
 
 Load balancing ensures that the application will be highly secure and available, in addition to restricting access to the network. The load balancer helps servers move data efficiently, optimizes the use of application delivery resources and prevents server overloads. Load balancers conduct continuous health checks on servers to ensure they can handle requests. If necessary, the load balancer removes unhealthy servers from the pool until they are restored. 
 
-The load balancer defends an organization against distributed denial-of-service (DDoS) attacks. The load balancer actively defends against DDoS by shifting attack traffic from the corporate server to a public cloud provider.The jump box allows the system to have fewer hardware resources and prevents to overuse of memory in cloud space.
+The load balancer defends an organization against distributed denial-of-service (DDoS) attacks. The load balancer actively defends against DDoS by shifting attack traffic from the corporate server to a public cloud provider.The jump box allows the system to have fewer hardware resources and prevents the overuse of memory in cloud space.
 
 Jump-Box minimizes the attack surface on the network since it is the only server exposed to public network. Only SSH Access to internal systems for administrative tasks is allowed from jump-box.  Jump-box is also used to deploy information of the containers to other servers. It can be considered as the main repository for docker. In this Project docker container software (docker.io) was first intalled in jump-box and then ansible container (provisioning tool) was installed by pulling image from cyberxsecurity/ansible. Thus jump-box system can be configured with minimal required memory and hardware resources in cloud setup.
 
@@ -70,9 +70,12 @@ Ansible was used to automate configuration of the ELK machine. No configuration 
 
 Create a new VM with atleast 4G memory, a public IP address and basic security group that will host ELK-Server under Red-Team VN2.
  - Verify SSH access to it from ansible container on jump-box
- - Add the Elk-Server VM to Ansible’s inventory by updating it’s hosts file in /etc/ansible to include ‘elk’ server under elk group as shown below 
+ - Add the Elk-Server VM to Ansible’s inventory by updating it’s hosts file in /etc/ansible to include ‘elk’ server under elk group as shown below:
+ 
 	[elk]
+	
 	10.1.0.4 ansible_python_interpreter=/usr/bin/python3
+	
  - Create a playbook to configure servers under [elk] group. 
  
 ###ELK Configuration:-
@@ -94,11 +97,13 @@ Playbook install-elk was used to deploy all packages and configurations needed f
 #Deploy the container to ELK server by running playbook install-elk.
 
 Following image shows the success of each step listed in playbook.
+
 [Playbook Install-Elk](https://github.com/MedhaParte/Project-Elk-Stack/blob/main/Diagrams/ELK-Server-%20configuration.png)
 
-# Launch the `elk-docker` container to start the ELK server.
+## Launch the `elk-docker` container to start the ELK server.
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
+
 [Launch the container](https://github.com/MedhaParte/Project-Elk-Stack/blob/main/Diagrams/docker_ps_output.png)
 
 
@@ -117,7 +122,8 @@ These Beats allow us to collect the following information from each machine:
     • Metric beat records Machine metrics like cpu usage, memory usage, network statistics etc. 
 
 ### Using the Playbook
-In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
+
+In order to use the playbook, we will use an Ansible control node which is already configured.  
 
 SSH into the control node and follow the steps below:
 - Make sure that the ELK server container is up and running
@@ -126,9 +132,11 @@ SSH into the control node and follow the steps below:
 - Run the playbook, and navigate to the Filebeat installation page on the ELK server GUI and verify incoming data.
 
 Following image shows the filebeat-configuration file.
+
 [Filebeat config file](https://github.com/MedhaParte/Project-Elk-Stack/blob/main/Diagrams/filebeat-config-file.png)
 
 Following image shows the kibana dashboard for Filebeat & Metricbeat.
+
 [Kibana Dashboard](https://github.com/MedhaParte/Project-Elk-Stack/blob/main/Diagrams/Kibana-dashboard.png)
 
 filebeat-playbook.yml & metricbeat-playbook.yml are the playbook files which are saved in /etc/ansible/roles folder.
