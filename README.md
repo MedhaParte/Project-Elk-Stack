@@ -44,6 +44,9 @@ The configuration details of each machine may be found below.
 | Web-3       | DVWA Web Server           | 10.0.0.9                 | Linux            |
 | Elk-Server  | ELK Information Collector | 10.1.0.4 & 13.86.xxx.xxx | Linux            |
 
+### Network Topology, peering between two virtual networks, summary of virtual machines created, and NSG rules and access policies in virtual cloud network are seen in attached file. [AZURE VIRTUAL NETWORK SETUP](https://github.com/MedhaParte/Project-Elk-Stack/blob/main/Diagrams/Azure%20Screenshots.pdf)
+
+
 ### Access Policies
 
 The machines on the internal network are not exposed to the public Internet. 
